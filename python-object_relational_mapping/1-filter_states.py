@@ -9,7 +9,7 @@ import MySQLdb
 
 if __name__ == "__main__":
     db = MySQLdb.connect(
-        host="localhost",
+        host="127.0.0.1",  # <-- غيرناها من localhost إلى 127.0.0.1 للماك
         port=3306,
         user=sys.argv[1],
         passwd=sys.argv[2],
@@ -22,7 +22,6 @@ if __name__ == "__main__":
     )
     rows = cursor.fetchall()
     for row in rows:
-        if row[1][0] == 'N':
-            print(row)
+        print(row)
     cursor.close()
     db.close()
