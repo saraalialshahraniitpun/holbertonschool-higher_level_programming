@@ -15,26 +15,26 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
         """Handle GET requests for different endpoints."""
         if self.path == '/':
             self.send_response(200)
-            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
 
         elif self.path == '/data':
             self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
             data = {"name": "John", "age": 30, "city": "New York"}
             self.wfile.write(json.dumps(data).encode('utf-8'))
 
         elif self.path == '/status':
             self.send_response(200)
-            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"OK")
 
         elif self.path == '/info':
             self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
             info_data = {
                 "version": "1.0",
@@ -44,17 +44,15 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
 
         else:
             self.send_response(404)
-            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
 
 
 if __name__ == "__main__":
     server = http.server.HTTPServer(('localhost', PORT), SimpleAPIHandler)
-    print("Server running on port {}".format(PORT))
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         pass
     server.server_close()
-    print("Server stopped.")
