@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
 Module that takes in an argument and displays all values in the states
-table of hbtn_0e_0_usa where name matches the argument.
-Takes 4 arguments: mysql username, mysql password, database name, and state name.
+table of hbtn_0e_0_usa where name matches the argument using .format().
 """
 import sys
 import MySQLdb
