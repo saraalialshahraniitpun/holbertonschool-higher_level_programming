@@ -1,0 +1,6 @@
+#!/usr/bin/node
+const updateHeader = document.querySelector('#update_header');
+updateHeader.addEventListener('click', function () {
+  const header = document.querySelector('header');
+  header.textContent = 'New Header!!!';
+});
